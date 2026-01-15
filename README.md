@@ -54,4 +54,4 @@ GET https://hn.algolia.com/api/v1/search?query=react
 Можно через docker-compose
 
 1. В терминале из корня проекта:
- ```docker-compose up -d```
+ ```docker-compose up -d --build```
