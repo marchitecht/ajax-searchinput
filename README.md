@@ -20,10 +20,38 @@ Hacker News Search App — это React-приложение с автокомп
 
 - Искать статьи по ключевым словам;
 - Получать информацию о авторе, заголовке, количестве комментариев, ссылке и других метаданных;
-- Поддерживает пагинацию и фильтрацию по типам постов.
 
 Пример запроса:
 
 ```http
 GET https://hn.algolia.com/api/v1/search?query=react
 ```
+
+## Как запускать
+Можно запустить локально
+
+1. ```git clone https://github.com/yourusername/hn-search-app.git```
+2. Установите зависимости
+```npm install```
+# или
+```yarn install```
+3. Запустите проект
+```npm run dev```
+# или
+```yarn start```
+
+
+Можно запустить через Docker
+
+1. Введите команду чтобы сбилдить проект 
+```docker build -t ajax-searchinput .```
+2. Запускаем контейнер
+```docker run -p 3000:80 ajax-searchinput```
+3. Откройте в браузере
+```http://localhost:3000```
+
+
+Можно через docker-compose
+
+1. В терминале из корня проекта:
+ ```docker-compose up -d```

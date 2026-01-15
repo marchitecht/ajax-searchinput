@@ -9,7 +9,6 @@ export default function App() {
 
   return (
     <main className="flex flex-col items-center justify-start min-h-screen bg-gray-50 p-4">
-      {/* Логотип и input немного выше центра */}
       <div className="flex flex-col items-center mt-24">
         <CustomLogo className="mb-6" />
 
@@ -23,7 +22,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Детали выбранного элемента — ниже */}
       {selectedItem && (
         <div className="mt-72 w-[500px]">
           <DetailsCard item={selectedItem} />
