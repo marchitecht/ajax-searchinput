@@ -12,14 +12,17 @@ import {
 
 interface HNComboboxProps {
   onSelect: (item: HNItem) => void;
+  onQueryChange?: (query: string) => void; 
 }
-
-export function HNCombobox({ onSelect }: HNComboboxProps) {
+export function HNCombobox({ onSelect, onQueryChange }: HNComboboxProps) {
   const [query, setQuery] = React.useState("");
   const [items, setItems] = React.useState<HNItem[]>([]);
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
+    // уведомляем родителя о изменении query
+    if (onQueryChange) onQueryChange(query);
+
     if (!query) {
       setItems([]);
       return;
@@ -33,7 +36,7 @@ export function HNCombobox({ onSelect }: HNComboboxProps) {
     }, 300);
 
     return () => clearTimeout(timeout);
-  }, [query]);
+  }, [query, onQueryChange]);
 
   return (
     <div className="relative w-full">

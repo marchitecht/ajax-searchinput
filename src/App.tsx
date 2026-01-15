@@ -8,18 +8,24 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState<HNItem | null>(null);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      {/* Логотип */}
-      <CustomLogo className="mb-8" />
+    <main className="flex flex-col items-center justify-start min-h-screen bg-gray-50 p-4">
+      {/* Логотип и input немного выше центра */}
+      <div className="flex flex-col items-center mt-24">
+        <CustomLogo className="mb-6" />
 
-      {/* Input / Combobox */}
-      <div className="w-[500px]">
-        <HNCombobox onSelect={setSelectedItem} />
+        <div className="w-[500px]">
+          <HNCombobox
+            onSelect={(item) => setSelectedItem(item)}
+            onQueryChange={(q) => {
+              if (!q) setSelectedItem(null);
+            }}
+          />
+        </div>
       </div>
 
-      {/* Детали выбранного элемента */}
+      {/* Детали выбранного элемента — ниже */}
       {selectedItem && (
-        <div className="mt-6 w-[500px]">
+        <div className="mt-72 w-[500px]">
           <DetailsCard item={selectedItem} />
         </div>
       )}
