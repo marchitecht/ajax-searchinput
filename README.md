@@ -1,73 +1,29 @@
-# React + TypeScript + Vite
+# Hacker News Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Краткое описание проекта
 
-Currently, two official plugins are available:
+Hacker News Search App — это React-приложение с автокомплит-поиском по статьям Hacker News.  
+Пользователь может вводить запрос в поле поиска, сразу видеть подходящие результаты в выпадающем списке (popover), и по клику на элемент получать подробную информацию о выбранной статье ниже поля поиска.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Особенности:
 
-## React Compiler
+- Автокомплит с моментальным откликом, как в Google/Yandex.
+- Поповер фиксированной высоты с прокруткой.
+- Детали выбранного элемента отображаются отдельно, не перекрывая поиск.
+- Центрированное расположение логотипа и поля поиска.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Используемый API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Проект использует открытое API [Hacker News Algolia API](https://hn.algolia.com/api), которое позволяет:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Искать статьи по ключевым словам;
+- Получать информацию о авторе, заголовке, количестве комментариев, ссылке и других метаданных;
+- Поддерживает пагинацию и фильтрацию по типам постов.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Пример запроса:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```http
+GET https://hn.algolia.com/api/v1/search?query=react
 ```
