@@ -31,13 +31,15 @@ GET https://hn.algolia.com/api/v1/search?query=react
 Можно запустить локально
 
 1. ```git clone https://github.com/marchitecht/ajax-searchinput```
+
 2. Установите зависимости
 ```npm install```
-# или
+или
 ```yarn install```
+
 3. Запустите проект
 ```npm run dev```
-# или
+или
 ```yarn start```
 
 
