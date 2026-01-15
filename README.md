@@ -30,7 +30,7 @@ GET https://hn.algolia.com/api/v1/search?query=react
 ## Как запускать
 Можно запустить локально
 
-1. ```git clone https://github.com/yourusername/hn-search-app.git```
+1. ```git clone https://github.com/marchitecht/ajax-searchinput```
 2. Установите зависимости
 ```npm install```
 # или
