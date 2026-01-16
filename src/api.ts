@@ -10,7 +10,8 @@ export async function searchHN(query: string): Promise<HNItem[]> {
   }
 
   const data: HNSearchResponse = await response.json();
-  console.log(data);
-  
-  return data.hits;
+
+  return data.hits.filter(
+    (item) => item._highlightResult?.title?.matchLevel === "full"
+  );
 }

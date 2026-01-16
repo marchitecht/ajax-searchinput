@@ -30,7 +30,7 @@ export function HNCombobox({ onSelect, onQueryChange }: HNComboboxProps) {
 
     const timeout = setTimeout(async () => {
       setLoading(true);
-      const data = await searchHN(query);
+      const data = await searchHN(query);      
       setItems(data.slice(0, 10));
       setLoading(false);
     }, 300);
